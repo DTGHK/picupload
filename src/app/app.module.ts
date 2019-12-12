@@ -14,7 +14,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user-authentication/login/login.component';
 import { PollFromComponent } from './pollform/poll-from/poll-from.component';
-import { MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatMenuModule, MatTableModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -32,17 +31,17 @@ import { MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatButtonMo
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDatepickerModule, 
-    MatNativeDateModule,
-    MatToolbarModule,
-    MatButtonModule, 
-    MatCardModule,
-    MatInputModule,
-    MatDialogModule,
-    MatTableModule,
-    MatMenuModule,
-    MatIconModule,
-    MatProgressSpinnerModule
+     
+  
+    
+     
+    
+    
+    
+    
+    
+    
+
   ],
   providers: [
     {

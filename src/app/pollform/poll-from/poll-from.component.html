@@ -1,5 +1,10 @@
-<h5><strong>Create a Poll</strong></h5>
-
+<mat-toolbar>
+    <span>
+        <h5><strong>Create a Poll</strong></h5>
+    </span>
+</mat-toolbar>
+<br>
+    <br>
 
 <div class="form-group col-sm-12">
 
@@ -17,6 +22,26 @@
             <label class="custom-control-label" for="defaultInline2">In an Area of Interest</label>
         </div>
     </div>
+    <br>
+    <br>
+    
+    <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Community">
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Area of Interest">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Poll Question">
+              <button mat-stroked-button color="primary">Upload</button>
+
+            </mat-form-field>
+    </form>
+
+
 
     <!-- Form starts -->
     <form (ngSubmit)="onSubmit()">
@@ -40,27 +65,3 @@
     <!-- Form ends -->
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="col-sm-9">
-                <span class="hidden-file">
-      <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
-    </span>
-                <div class="btn-group" (click)="fileInput.click()">
-                    
-                    
-                </div>
-            </div> -->
