@@ -16,6 +16,7 @@ export class PollFromComponent implements OnInit {
   image: File;
   resData: any;
   selectedFile = null;
+  isUploaded: boolean = false;
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -37,8 +38,8 @@ export class PollFromComponent implements OnInit {
   }
 
   imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.file;
-    console.log(this.croppedImage);
+    this.croppedImage = event;
+    console.log('cropped base64',this.croppedImage.base64, 'cropped image', this.croppedImage);
 
   }
 
@@ -61,12 +62,12 @@ export class PollFromComponent implements OnInit {
     payload.append('fileName', this.selectedFile.name);
     payload.append('totalFileSize', this.selectedFile.size);
     payload.append('contentType', this.selectedFile.type);
-    payload.append('file', this.croppedImage, this.croppedImage);
-    console.log(payload)
+    payload.append('file', this.croppedImage.file, this.croppedImage);
+    console.log("payload",payload)
     this.pollService.uploadImage(payload, this.selectedFile)
       .subscribe((data: any) => {
-        this.resData = data;
-        console.log(this.resData);
+        this.resData = data.fullPath;
+        this.isUploaded = true;
       });
   }
 
