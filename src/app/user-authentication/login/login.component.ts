@@ -11,44 +11,22 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   login: FormGroup;
-
   constructor( private formBuilder: FormBuilder, private routes: Router) {
-    
    }
-createForm(){
-   this.login = this.formBuilder.group({
-    username: ['admin@webdunia.com', Validators.required],
-    password: ['admin123', Validators.required]
-  })
-}
-
-   getError(el) {
-    switch (el) {
-      case 'user':
-        if (this.login.get('username').hasError('required')) {
-          return 'Username required';
-        }
-        break;
-      case 'pass':
-        if (this.login.get('password').hasError('required')) {
-          return 'Password required';
-        }
-        break;
-      default:
-        return '';
-    }
-  }
-  
+ 
   ngOnInit() {
-    this.createForm();
+    this.login = new FormGroup({
+      username :new FormControl ('', [Validators.required,Validators.email]),
+      password: new FormControl('', [Validators.required])
+    })
   }
+
+  
 
   onSubmit(){
-    console.log("username", this.login.value.username, ",  password", this.login.value.password)
-    if(this.login.value.username === "admin@webdunia.com"){
-      if(this.login.value.password === "admin123"){
-        this.routes.navigate(['poll-form']);
-      }
+   console.log(this.login.value)
+    if(this.login.value.username === "admin@webdunia.com" || this.login.value.password === "admin123"){  
+        this.routes.navigate(['poll-form']); 
     }
   }
 
