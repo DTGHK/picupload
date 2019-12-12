@@ -21,11 +21,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  
-
   onSubmit(){
    console.log(this.login.value)
-    if(this.login.value.username === "admin@webdunia.com" || this.login.value.password === "admin123"){  
+    if(this.login.value.username === "admin@webdunia.com" && this.login.value.password === "admin123"){  
         this.routes.navigate(['poll-form']); 
     }
   }
