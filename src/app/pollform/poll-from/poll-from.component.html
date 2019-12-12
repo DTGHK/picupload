@@ -1,0 +1,65 @@
+<h5><strong>Create a Poll</strong></h5>
+
+
+<div class="form-group col-sm-12">
+
+    <div class="btn-group" data-toggle="buttons">
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample"
+                value="Community" (click)=onSelect($event)>
+            <label class="custom-control-label" for="defaultInline1">In a Community</label>
+        </div>
+
+        <!-- Default inline 2-->
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample"
+                value="Interest" (click)=onSelect($event)>
+            <label class="custom-control-label" for="defaultInline2">In an Area of Interest</label>
+        </div>
+    </div>
+
+    <!-- Form starts -->
+    <form (ngSubmit)="onSubmit()">
+        <input type="hidden" name="size" value="1000000">
+        <div>
+            <input type="file" name="image" (change)="onFileSelected($event)">
+            <image-cropper [imageChangedEvent]="imageChangedEvent" outputType="file" [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+      
+                <img [src]="croppedImage" />
+            
+        </div>
+        <div>
+            <input id="textauthor" name="name" placeholder="Name">
+            <button type="submit" name="upload">POST</button>
+        </div>
+    </form>
+    <!-- Form ends -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-sm-9">
+                <span class="hidden-file">
+      <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
+    </span>
+                <div class="btn-group" (click)="fileInput.click()">
+                    
+                    
+                </div>
+            </div> -->
