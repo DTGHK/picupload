@@ -27,9 +27,9 @@
                 [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)"
                 (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
             </image-cropper>
-      
-                <img [src]="croppedImage" />
-            
+
+            <img [src]="croppedImage" />
+
         </div>
         <div>
             <input id="textauthor" name="name" placeholder="Name">
@@ -44,22 +44,41 @@
 
 
 
+<div class="mat-input-infix mat-form-field-infix">
+    <input _ngcontent-c43=""
+        class="form-control mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
+        matinput="" required="" type="text" maxlength="20" id="mat-input-4" placeholder="Option&nbsp;2"
+        aria-invalid="true" aria-required="true">
+    <!---->
+    <div _ngcontent-c43="" class="option-event">
+
+        <!---->
+        <div _ngcontent-c43="" class="file-upload upload-drive ng-star-inserted" mattooltipposition="left"
+            aria-describedby="cdk-describedby-message-1" cdk-describedby-host="">
+            <label _ngcontent-c43="" class="file-upload__label" for="upload2">
+                <i _ngcontent-c43="" class="icon-image"></i>UPLOAD</label>
+            <!----><input _ngcontent-c43="" class="form-control file-upload__input ng-star-inserted" type="file"
+                name="optImageUrl1" accept="image/jpeg,image/png,image/jpg">
+            <!----><input _ngcontent-c43="" type="hidden" class="ng-untouched ng-pristine ng-valid ng-star-inserted"
+                value="">
 
 
-
-
-
-
-
-
-
-
-<!-- <div class="col-sm-9">
-                <span class="hidden-file">
-      <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
-    </span>
-                <div class="btn-group" (click)="fileInput.click()">
-                    
-                    
-                </div>
-            </div> -->
+            <!---->
+            <!---->
+        </div>
+        <!---->
+        <!---->
+        <!----><a _ngcontent-c43="" class="option-action ng-star-inserted" href="javascript:void(0)">
+            <i _ngcontent-c43="" class="icon-minus"></i>
+        </a>
+    </div>
+    <span class="mat-form-field-label-wrapper mat-input-placeholder-wrapper mat-form-field-placeholder-wrapper">
+        <!----><label
+            class="mat-form-field-label mat-input-placeholder mat-form-field-placeholder ng-tns-c44-11 mat-empty mat-form-field-empty ng-star-inserted"
+            for="mat-input-4" aria-owns="mat-input-4">
+            <!---->
+            <!---->Option&nbsp;2
+            <!---->
+            <!----><span aria-hidden="true"
+                class="mat-placeholder-required mat-form-field-required-marker ng-tns-c44-11 ng-star-inserted">&nbsp;*</span></label></span>
+</div>
