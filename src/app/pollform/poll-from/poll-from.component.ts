@@ -1,7 +1,14 @@
-import { Component, OnInit, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { PollRegisterService } from 'src/app/service/poll-register/poll-register.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ImagePreviewComponent } from '../cropper-popup/image-preview/image-preview.component';
+
+export interface DialogData {
+  selectFile: any
+  child: string;
+}
 
 @Component({
   selector: 'app-poll-from',
@@ -13,66 +20,54 @@ import { PollRegisterService } from 'src/app/service/poll-register/poll-register
 export class PollFromComponent implements OnInit {
 
 
-  image: File;
-  resData: any;
+  ram: string = "aman"
   selectedFile = null;
   isUploaded: boolean = false;
+  croppedImage: any;
+  
 
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
 
 
-  constructor(private formBuilder: FormBuilder, private cd: ChangeDetectorRef, private pollService: PollRegisterService) {
+  constructor(private formBuilder: FormBuilder,
+     public dialog: MatDialog,
+      private cd: ChangeDetectorRef,
+       private pollService: PollRegisterService,
+       ) {
 
   }
 
   ngOnInit() {
   }
 
-  onFileSelected(event) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-      this.imageChangedEvent = event;
-      console.log(this.selectedFile);
-    }
-  }
+ 
 
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event;
-    console.log('cropped base64',this.croppedImage.base64, 'cropped image', this.croppedImage);
+  
 
-  }
-
-  imageLoaded() {
-    // show cropper
-  }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
+  
 
 
   onSubmit() {
-    const payload = new FormData();
-    payload.append('orgId', '1');
-    payload.append('subOrgId', '1');
-    payload.append('uuid', '111b55c2d0-641e-4045-b1d5-482c62da1624');
-    payload.append('fileName', this.selectedFile.name);
-    payload.append('totalFileSize', this.selectedFile.size);
-    payload.append('contentType', this.selectedFile.type);
-    payload.append('file', this.croppedImage.file, this.croppedImage);
-    console.log("payload",payload)
-    this.pollService.uploadImage(payload, this.selectedFile)
-      .subscribe((data: any) => {
-        this.resData = data.fullPath;
-        this.isUploaded = true;
-      });
+    
   }
 
 
   onSelect(event) {
     console.log(event.target.value)
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ImagePreviewComponent, {
+      width: '700px',
+      height: '700px',
+      data: { child: this.ram, selectfile: this.selectedFile}
+      //data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     this.croppedImage = localStorage.getItem('img')
+
+     /// this.animal = result;
+    });
   }
 }

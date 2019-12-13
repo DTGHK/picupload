@@ -4,7 +4,7 @@
     </span>
 </mat-toolbar>
 <br>
-    <br>
+<br>
 
 <div class="form-group col-sm-12">
 
@@ -24,21 +24,52 @@
     </div>
     <br>
     <br>
-    
+
     <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Community">
+        <input type="hidden" name="size" value="1000000">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Community" required="">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput class="mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
+                aria-required="true" required="" aria-invalid="true" placeholder="Area of Interest">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <div class="mat-input-infix mat-form-field-infix">
+                <input matInput
+                    class="mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
+                    aria-required="true" required="" maxlength="100" aria-invalid="true" placeholder="Poll Question">
+                <div class="option-event">
+                    <div class="file-upload upload-drive ng-star-inserted">
+                        <label class="file-upload__label align" for="pollQusImg" mattooltipposition="right"
+                            aria-describedby="cdk-describedby-message-0" cdk-describedby-host="">
+                            <mat-icon aria-hidden="false" class="icon-image" (click)="openDialog()" ></mat-icon>
+                            <!-- <i class="icon-image"></i>UPLOAD -->
+                        </label>
+                       
+                    </div>
+                   
+                </div>
+                <img [src]="croppedImage" alt="">
+            </div>
+        </mat-form-field>
+
+        <div>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Start date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-          
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Area of Interest">
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="End date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Poll Question">
-              <button mat-stroked-button color="primary">Upload</button>
-
-            </mat-form-field>
+        </div>
     </form>
 
 
@@ -47,14 +78,14 @@
     <form (ngSubmit)="onSubmit()">
         <input type="hidden" name="size" value="1000000">
         <div>
-            <input type="file" name="image" (change)="onFileSelected($event)">
-            <image-cropper [imageChangedEvent]="imageChangedEvent" outputType="both" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-                [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded($event)"
-                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+            <!-- <app-image-preview
+            
 
-                <ng-container *ngIf="isUploaded">
-                    <img width="300" [src]="resData" />
-                </ng-container>
+        </app-image-preview> -->
+
+            <ng-container *ngIf="isUploaded">
+                <img width="300" [src]="resData" />
+            </ng-container>
         </div>
         <div>
             <input id="textauthor" name="name" placeholder="Name">

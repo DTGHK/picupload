@@ -12,7 +12,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req,next){
     let tokenizedReq = req.clone({
       setHeaders: {
-        'rc-token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWJPcmdJZCI6MSwicm9sZXMiOlsiQVBQX0FETUlOIiwiQ09NTVVOSVRZX0FETUlOIiwiQU9JX0FETUlOIiwiVVNFUiIsIlNNRSIsIkJST0FEQ0FTVEVSIl0sInVzZXJFeHRlcm5hbElkIjoiMTEiLCJleHAiOjE1NzYyMTg4OTQsInVzZXJJZCI6MTEsImlhdCI6MTU3NjEzMjQ5NCwib3JnSWQiOjF9.zh6YwG1kWzsDdUqz7bB-Gx9JOOkLk58Tt_TrmYHezYT_MmJxCEG6WwUpVQ4K6nGlCBItm5sLl4obeQ_FVjCVfw'
+        'rc-token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWJPcmdJZCI6MSwicm9sZXMiOlsiQVBQX0FETUlOIiwiQ09NTVVOSVRZX0FETUlOIiwiQU9JX0FETUlOIiwiVVNFUiIsIlNNRSIsIkJST0FEQ0FTVEVSIl0sInVzZXJFeHRlcm5hbElkIjoiMTEiLCJleHAiOjE1NzYzMjE5OTQsInVzZXJJZCI6MTEsImlhdCI6MTU3NjIzNTU5NCwib3JnSWQiOjF9.o9PSGNcON5NAwRPSXwEKQAFtffn9Y_5s2-w-Ukf8s98d3v3UmystBoy_i5_r-1313sWXet-Tqtf6zabma4Zbng'
       }
     })
     return next.handle(tokenizedReq)

@@ -14,13 +14,16 @@ import {HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user-authentication/login/login.component';
 import { PollFromComponent } from './pollform/poll-from/poll-from.component';
+import { ImagePreviewComponent } from './pollform/cropper-popup/image-preview/image-preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PollFromComponent
+    PollFromComponent,
+    ImagePreviewComponent,
   ],
+  entryComponents: [ImagePreviewComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -31,18 +34,7 @@ import { PollFromComponent } from './pollform/poll-from/poll-from.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-     
-  
-    
-     
-    
-    
-    
-    
-    
-    
-
-  ],
+ ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

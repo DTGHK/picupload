@@ -8,12 +8,14 @@ import {
     MatDatepickerModule,
     MatToolbarModule,
     MatIconModule,
+    MatTooltipModule,
     MatMenuModule,
     MatSidenavModule,
     MatSelectModule,
     MatRadioModule,
     MatTableModule,
     MatDialogModule,
+    MatDialogRef,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatExpansionModule
@@ -33,6 +35,7 @@ import { NgModule } from '@angular/core';
         MatDatepickerModule, 
         MatNativeDateModule,
         MatToolbarModule, 
+        MatTooltipModule,
         MatIconModule,
         MatCardModule,
         MatFormFieldModule,
@@ -48,6 +51,7 @@ import { NgModule } from '@angular/core';
     exports: [ 
         MatButtonModule, 
         MatCheckboxModule, 
+        MatTooltipModule,
         MatDatepickerModule,
         MatInputModule,
         MatProgressSpinnerModule,
@@ -64,6 +68,12 @@ import { NgModule } from '@angular/core';
         MatRadioModule,
         MatPaginatorModule,
         MatExpansionModule
+    ],
+    providers: [
+        {
+            provide: MatDialogRef,
+            useValue: {}
+          }
     ]
 
 })
