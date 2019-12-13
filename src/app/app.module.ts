@@ -14,14 +14,16 @@ import {HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user-authentication/login/login.component';
 import { PollFromComponent } from './pollform/poll-from/poll-from.component';
-import { MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatMenuModule, MatTableModule, MatIconModule, MatProgressSpinnerModule, MatChipAvatar, MatChipInput, MatChipList } from '@angular/material';
+import { ImagePreviewComponent } from './pollform/cropper-popup/image-preview/image-preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PollFromComponent
+    PollFromComponent,
+    ImagePreviewComponent,
   ],
+  entryComponents: [ImagePreviewComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -32,18 +34,7 @@ import { MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatButtonMo
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDatepickerModule, 
-    MatNativeDateModule,
-    MatToolbarModule,
-    MatButtonModule, 
-    MatCardModule,
-    MatInputModule,
-    MatDialogModule,
-    MatTableModule,
-    MatMenuModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-  ],
+ ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

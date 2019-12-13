@@ -1,5 +1,10 @@
-<h5><strong>Create a Poll</strong></h5>
-
+<mat-toolbar>
+    <span>
+        <h5><strong>Create a Poll</strong></h5>
+    </span>
+</mat-toolbar>
+<br>
+<br>
 
 <div class="form-group col-sm-12">
 
@@ -17,68 +22,79 @@
             <label class="custom-control-label" for="defaultInline2">In an Area of Interest</label>
         </div>
     </div>
+    <br>
+    <br>
+
+    <form class="example-form">
+        <input type="hidden" name="size" value="1000000">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Community" required="">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput class="mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
+                aria-required="true" required="" aria-invalid="true" placeholder="Area of Interest" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <div class="mat-input-infix mat-form-field-infix">
+                <input matInput
+                    class="mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
+                    aria-required="true" required="" maxlength="100" aria-invalid="true" placeholder="Poll Question" required>
+                <div class="option-event">
+                    <div class="file-upload upload-drive ng-star-inserted">
+                        <label class="file-upload__label align" for="pollQusImg" mattooltipposition="right"
+                            aria-describedby="cdk-describedby-message-0" cdk-describedby-host="">
+                            <mat-icon aria-hidden="false" class="icon-image" (click)="openDialog()" ></mat-icon>
+                            <!-- <i class="icon-image"></i>UPLOAD -->
+                        </label>
+                       
+                    </div>
+                   
+                </div>
+                <img [src]="croppedImage" alt="">
+            </div>
+        </mat-form-field>
+
+        <div>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Start date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="End date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+    </form>
+
+
 
     <!-- Form starts -->
     <form (ngSubmit)="onSubmit()">
         <input type="hidden" name="size" value="1000000">
         <div>
-            <input type="file" name="image" (change)="onFileSelected($event)">
-            <image-cropper [imageChangedEvent]="imageChangedEvent" outputType="file" [maintainAspectRatio]="true"
-                [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)"
-                (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
-            </image-cropper>
+            <!-- <app-image-preview
+            
 
-            <img [src]="croppedImage" />
+        </app-image-preview> -->
 
+            <ng-container *ngIf="isUploaded">
+                <img width="300" [src]="resData" />
+            </ng-container>
         </div>
         <div>
-            <input id="textauthor" name="name" placeholder="Name">
-            <button type="submit" name="upload">POST</button>
+            <!-- <input id="textauthor" name="name" placeholder="Name"> -->
+            <!-- <button type="submit" name="upload">POST</button> -->
+            <button type="submit" class="btn btn-outline-primary" name="upload" (click)="onSubmit()">Publish</button>
+
         </div>
     </form>
+
     <!-- Form ends -->
 
-</div>
-
-
-
-
-
-<div class="mat-input-infix mat-form-field-infix">
-    <input _ngcontent-c43=""
-        class="form-control mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
-        matinput="" required="" type="text" maxlength="20" id="mat-input-4" placeholder="Option&nbsp;2"
-        aria-invalid="true" aria-required="true">
-    <!---->
-    <div _ngcontent-c43="" class="option-event">
-
-        <!---->
-        <div _ngcontent-c43="" class="file-upload upload-drive ng-star-inserted" mattooltipposition="left"
-            aria-describedby="cdk-describedby-message-1" cdk-describedby-host="">
-            <label _ngcontent-c43="" class="file-upload__label" for="upload2">
-                <i _ngcontent-c43="" class="icon-image"></i>UPLOAD</label>
-            <!----><input _ngcontent-c43="" class="form-control file-upload__input ng-star-inserted" type="file"
-                name="optImageUrl1" accept="image/jpeg,image/png,image/jpg">
-            <!----><input _ngcontent-c43="" type="hidden" class="ng-untouched ng-pristine ng-valid ng-star-inserted"
-                value="">
-
-
-            <!---->
-            <!---->
-        </div>
-        <!---->
-        <!---->
-        <!----><a _ngcontent-c43="" class="option-action ng-star-inserted" href="javascript:void(0)">
-            <i _ngcontent-c43="" class="icon-minus"></i>
-        </a>
-    </div>
-    <span class="mat-form-field-label-wrapper mat-input-placeholder-wrapper mat-form-field-placeholder-wrapper">
-        <!----><label
-            class="mat-form-field-label mat-input-placeholder mat-form-field-placeholder ng-tns-c44-11 mat-empty mat-form-field-empty ng-star-inserted"
-            for="mat-input-4" aria-owns="mat-input-4">
-            <!---->
-            <!---->Option&nbsp;2
-            <!---->
-            <!----><span aria-hidden="true"
-                class="mat-placeholder-required mat-form-field-required-marker ng-tns-c44-11 ng-star-inserted">&nbsp;*</span></label></span>
 </div>

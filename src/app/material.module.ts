@@ -3,16 +3,21 @@ import {
     MatCheckboxModule, 
     MatFormFieldModule, 
     MatNativeDateModule, 
+    MatCardModule,
     MatInputModule,
     MatDatepickerModule,
     MatToolbarModule,
     MatIconModule,
+    MatTooltipModule,
     MatMenuModule,
     MatSidenavModule,
     MatSelectModule,
     MatRadioModule,
     MatTableModule,
+    MatDialogModule,
+    MatDialogRef,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatExpansionModule
     
 } from '@angular/material';
@@ -26,27 +31,35 @@ import { NgModule } from '@angular/core';
         MatButtonModule, 
         MatCheckboxModule, 
         MatInputModule,
+        MatProgressSpinnerModule,
         MatDatepickerModule, 
         MatNativeDateModule,
         MatToolbarModule, 
+        MatTooltipModule,
         MatIconModule,
+        MatCardModule,
         MatFormFieldModule,
         MatMenuModule,
         MatSidenavModule,
         MatSelectModule,
         MatRadioModule,
         MatTableModule,
+        MatDialogModule,
         MatPaginatorModule,
         MatExpansionModule
     ],
     exports: [ 
         MatButtonModule, 
         MatCheckboxModule, 
+        MatTooltipModule,
         MatDatepickerModule,
         MatInputModule,
+        MatProgressSpinnerModule,
+        MatDialogModule,
         MatNativeDateModule,
         MatToolbarModule, 
         MatIconModule,
+        MatCardModule,
         MatFormFieldModule,
         MatMenuModule,
         MatSidenavModule,
@@ -55,6 +68,12 @@ import { NgModule } from '@angular/core';
         MatRadioModule,
         MatPaginatorModule,
         MatExpansionModule
+    ],
+    providers: [
+        {
+            provide: MatDialogRef,
+            useValue: {}
+          }
     ]
 
 })
