@@ -12,7 +12,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req,next){
     let tokenizedReq = req.clone({
       setHeaders: {
-        'rc-token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWJPcmdJZCI6MSwicm9sZXMiOlsiQVBQX0FETUlOIiwiQ09NTVVOSVRZX0FETUlOIiwiQU9JX0FETUlOIiwiVVNFUiIsIlNNRSIsIkJST0FEQ0FTVEVSIl0sInVzZXJFeHRlcm5hbElkIjoiMTEiLCJleHAiOjE1NzYzMjE5OTQsInVzZXJJZCI6MTEsImlhdCI6MTU3NjIzNTU5NCwib3JnSWQiOjF9.o9PSGNcON5NAwRPSXwEKQAFtffn9Y_5s2-w-Ukf8s98d3v3UmystBoy_i5_r-1313sWXet-Tqtf6zabma4Zbng'
+        'rc-token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWJPcmdJZCI6MSwicm9sZXMiOlsiQVBQX0FETUlOIiwiQ09NTVVOSVRZX0FETUlOIiwiQU9JX0FETUlOIiwiVVNFUiIsIlNNRSIsIkJST0FEQ0FTVEVSIl0sInVzZXJFeHRlcm5hbElkIjoiMTEiLCJleHAiOjE1NzY1NjI5NDcsInVzZXJJZCI6MTEsImlhdCI6MTU3NjQ3NjU0Nywib3JnSWQiOjF9.ySD5RHEzfymgO3q-yKDmN_l6WO9rOBI5AlLzvxlIUb6YVqSIEtKKE0VYnB3G_Kf45Y_xMujyL4tPgyG7aCj2-g'
       }
     })
     return next.handle(tokenizedReq)

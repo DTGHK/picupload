@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, inject, Inject } from '@angular/core';
+import { Component, OnInit, Input, inject, Inject, Output, EventEmitter } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PollRegisterService } from 'src/app/service/poll-register/poll-register.service';
@@ -6,11 +6,8 @@ import { PollRegisterService } from 'src/app/service/poll-register/poll-register
 
 export interface DialogData {
   selectFile: any
-  name: string;
+
 }
-
-
-
 
 @Component({
   selector: 'app-image-preview',
@@ -20,34 +17,40 @@ export interface DialogData {
 export class ImagePreviewComponent implements OnInit {
   resData: any;
   isUploaded: boolean;
+  isImageSelected: boolean;
 
-  constructor( public dialogRef: MatDialogRef<ImagePreviewComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<ImagePreviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private pollService: PollRegisterService) { }
+    private pollService: PollRegisterService
+    ) { }
 
-  @Input() selectedFileChild;
 
- 
+  @Output() onUploaded = new EventEmitter<any>();
+
 
   croppedImage: any = '';
-    selectedFile=null;
-    imageChangedEvent: any = '';
-  
+  @Input() selectedFile = null;
+  @Input() imageChangedEvent: any = '';
+
 
   ngOnInit() {
   }
+
+
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event;
+    console.log('cropped base64', this.croppedImage.base64, 'cropped image', this.croppedImage);
+
+  }
+
   onFileSelected(event) {
     if (event.target.files.length > 0) {
       this.selectedFile = event.target.files[0];
       this.imageChangedEvent = event;
       console.log(this.selectedFile);
+      this.isImageSelected = true
     }
-  }
-
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event;
-    console.log('cropped base64',this.croppedImage.base64, 'cropped image', this.croppedImage);
-
   }
 
   imageLoaded() {
@@ -70,12 +73,12 @@ export class ImagePreviewComponent implements OnInit {
     payload.append('totalFileSize', this.selectedFile.size);
     payload.append('contentType', this.selectedFile.type);
     payload.append('file', this.croppedImage.file, this.croppedImage);
-    console.log("payload",payload)
+    console.log("payload", payload)
     this.pollService.uploadImage(payload, this.selectedFile)
       .subscribe((data: any) => {
         this.resData = data.fullPath;
-        localStorage.setItem("img",this.resData)
-        this.isUploaded = true;
+        localStorage.setItem("img", this.resData)
+        this.onUploaded.emit(this.isUploaded = true)
       });
   }
 

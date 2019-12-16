@@ -24,16 +24,15 @@
     </div>
     <br>
     <br>
-
-    <form class="example-form">
-        <input type="hidden" name="size" value="1000000">
+    <form [formGroup] = "poll" class="example-form" (ngSubmit)="onSubmit()">
+        
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Community" required="">
+            <input matInput placeholder="Community" required="" formControlName = "community">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <input matInput class="mat-input-element mat-form-field-autofill-control ng-pristine ng-invalid ng-touched"
-                aria-required="true" required="" aria-invalid="true" placeholder="Area of Interest">
+                aria-required="true" required="" aria-invalid="true" placeholder="Area of Interest" formControlName = "areaOfInterest">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -45,54 +44,37 @@
                     <div class="file-upload upload-drive ng-star-inserted">
                         <label class="file-upload__label align" for="pollQusImg" mattooltipposition="right"
                             aria-describedby="cdk-describedby-message-0" cdk-describedby-host="">
-                            <mat-icon aria-hidden="false" class="icon-image" (click)="openDialog()" ></mat-icon>
-                            <!-- <i class="icon-image"></i>UPLOAD -->
+                            <mat-icon aria-hidden="false" class="icon-image" (click)="openComponentOverlay()"></mat-icon>
                         </label>
-                       
                     </div>
-                   
                 </div>
-                <img [src]="croppedImage" alt="">
+                <ng-container *ngIf="">
+                    <img [src]="croppedImage" alt="yes">
+                </ng-container>
             </div>
         </mat-form-field>
-
-        <div>
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Start date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker1" placeholder="End date">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-
-        </div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName ="startdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="End date" formControlName= "enddate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <button type="submit" class="btn btn-outline-primary">Publish</button>
     </form>
+    <input type="hidden" name="size" value="1000000">
+    <div>
+        <input id="pollQusImg" style="display: none" type="file" name="image" (change)="onFileSelected($event)">
 
-
-
-    <!-- Form starts -->
-    <form (ngSubmit)="onSubmit()">
-        <input type="hidden" name="size" value="1000000">
-        <div>
-            <!-- <app-image-preview
-            
-
-        </app-image-preview> -->
-
-            <ng-container *ngIf="isUploaded">
-                <img width="300" [src]="resData" />
-            </ng-container>
-        </div>
-        <div>
-            <input id="textauthor" name="name" placeholder="Name">
-            <button type="submit" name="upload">POST</button>
-        </div>
-    </form>
-
-    <!-- Form ends -->
-
+        <ng-container *ngIf="isImageSelected">
+            <app-image-preview [imageChangedEvent]="imageChangedEvent" (onUploaded)="onUpload($event)"
+                [selectedFile]="selectedFile">
+            </app-image-preview>
+        </ng-container>
+        
+    </div>
 </div>

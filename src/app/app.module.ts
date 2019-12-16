@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from './material.module'
-import {FileUploadModule} from "ng2-file-upload";   
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material.module'
+import { FileUploadModule } from "ng2-file-upload";
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { TokenInterceptorService } from './service/token-interceptor.service';
-import {HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user-authentication/login/login.component';
@@ -22,6 +22,7 @@ import { ImagePreviewComponent } from './pollform/cropper-popup/image-preview/im
     LoginComponent,
     PollFromComponent,
     ImagePreviewComponent,
+
   ],
   entryComponents: [ImagePreviewComponent],
   imports: [
@@ -34,7 +35,7 @@ import { ImagePreviewComponent } from './pollform/cropper-popup/image-preview/im
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
- ],
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
