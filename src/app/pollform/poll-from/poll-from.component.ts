@@ -54,23 +54,23 @@ export class PollFromComponent implements OnInit {
   }
 
 
-  openComponentOverlay() {
+  // openComponentOverlay() {
     
-    const overlayRef = this.overlay.create({
-      hasBackdrop: true,
-      width: '200px',
-      height: '200px'
-    });
+  //   const overlayRef = this.overlay.create({
+  //     hasBackdrop: true,
+  //     width: '200px',
+  //     height: '200px'
+  //   });
 
-    const popupComponentPortal = new ComponentPortal(ImagePreviewComponent);
+  //   const popupComponentPortal = new ComponentPortal(ImagePreviewComponent);
 
-    overlayRef.attach(popupComponentPortal);
+  //   overlayRef.attach(popupComponentPortal);
     
-    overlayRef.backdropClick().subscribe(() => {
-      overlayRef.dispose();
+  //   overlayRef.backdropClick().subscribe(() => {
+  //     overlayRef.dispose();
 
-    });
-  }
+  //   });
+  // }
 
   onFileSelected(event) {
     if (event.target.files.length > 0) {

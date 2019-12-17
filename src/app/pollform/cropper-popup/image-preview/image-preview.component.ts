@@ -26,12 +26,15 @@ export class ImagePreviewComponent implements OnInit {
     ) { }
 
 
-  @Output() onUploaded = new EventEmitter<any>();
+  // @Output() 
+  onUploaded = new EventEmitter<any>();
 
 
   croppedImage: any = '';
-  @Input() selectedFile = null;
-  @Input() imageChangedEvent: any = '';
+  // @Input(/) 
+  selectedFile = null;
+  // @Input()
+   imageChangedEvent: any = '';
 
 
   ngOnInit() {

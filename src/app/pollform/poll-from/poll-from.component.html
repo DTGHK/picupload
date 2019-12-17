@@ -44,7 +44,7 @@
                     <div class="file-upload upload-drive ng-star-inserted">
                         <label class="file-upload__label align" for="pollQusImg" mattooltipposition="right"
                             aria-describedby="cdk-describedby-message-0" cdk-describedby-host="">
-                            <mat-icon aria-hidden="false" class="icon-image" (click)="openComponentOverlay()"></mat-icon>
+                            <mat-icon aria-hidden="false" class="icon-image" (click)="openDialog()"></mat-icon>
                         </label>
                     </div>
                 </div>
@@ -68,12 +68,14 @@
     </form>
     <input type="hidden" name="size" value="1000000">
     <div>
-        <input id="pollQusImg" style="display: none" type="file" name="image" (change)="onFileSelected($event)">
+        
 
         <ng-container *ngIf="isImageSelected">
-            <app-image-preview [imageChangedEvent]="imageChangedEvent" (onUploaded)="onUpload($event)"
-                [selectedFile]="selectedFile">
-            </app-image-preview>
+            <app-image-preview
+             
+                >
+            </app-image-preview
+            >
         </ng-container>
         
     </div>
